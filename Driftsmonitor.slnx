@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Driftsmonitor.App/Driftsmonitor.App.csproj" />
+  <Project Path="Driftsmonitor.Core/Driftsmonitor.Core.csproj" />
+</Solution>
