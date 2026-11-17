@@ -1,6 +1,7 @@
+using System.Collections;
 namespace DataStructures;
 
-public class RingBuffer<T>
+public class RingBuffer<T> : IEnumerable<T>
 {
     private readonly T[] _items;
     private int _start;   // indeks i _items til det eldste elementet
@@ -35,7 +36,6 @@ public class RingBuffer<T>
             }
     }
 
-    /// <summary>Indeks 0 er alltid det eldste elementet som fortsatt er i bufferet.</summary>
     public T this[int index]
     {
         get
@@ -48,7 +48,6 @@ public class RingBuffer<T>
         }
     }
 
-    /// <summary>Det eldste elementet. Thrower en passende exception hvis bufferet er tomt.</summary>
     public T Oldest
     {
         get
@@ -61,8 +60,9 @@ public class RingBuffer<T>
         }
     }
 
-    /// <summary>Det nyeste elementet. Thrower en passende exception hvis bufferet er tomt.</summary>
-    public T Newest
+    /// <summary>Det nyeste elementet. Thrower en passende exception hvis bufferet er tomt.</summary> 
+    /// 
+     public T Newest
     {
         get
         {
@@ -91,4 +91,15 @@ public class RingBuffer<T>
         }
     return result;
     }
+    public IEnumerator<T> GetEnumerator()
+    {
+    // TODO: Return elements from oldest to newest
+    for (int i = 0; i < _count; i++)
+        {
+            yield return this[i];
+        }
+    }
+
+IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
 }
